@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hazel-auth"
 version = "0.1.dev0"
-description = "Simple user registration/authentication library"
+description = "Simple user registration and authentication library"
 authors = ["Abdul-Hakeem Shaibu <hkmshb@gmail.com>"]
 keywords = ["authentication", "registration", "users"]
 license = "BSD-2-Clause"
