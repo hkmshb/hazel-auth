@@ -9,8 +9,26 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6"
+argon2_cffi = "^18.3"
 "zope.interface" = "^4.5"
+hazel-db = { git="https://github.com/hkmshb/hazel-db.git", branch="master" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.5"
 pytest-cov = "^2.5"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+skipsdist = true
+envlist = py36
+
+[testenv]
+whitelist_externals =
+    bash
+    poetry
+skip_install = true
+commands =
+    bash ./prepare-toxenv.sh {envbindir} {toxinidir}
+    poetry run py.test --cov tests {posargs}
+"""
