@@ -7,21 +7,35 @@ keywords = ["authentication", "registration", "users"]
 license = "BSD-2-Clause"
 readme = "README.md"
 
+
 [tool.poetry.dependencies]
 python = "^3.6"
 argon2_cffi = "^18.3"
 "zope.interface" = "^4.5"
 hazel-db = { git="https://github.com/hkmshb/hazel-db.git", branch="master" }
 
+
 [tool.poetry.dev-dependencies]
 pytest = "^3.5"
 pytest-cov = "^2.5"
+pre-commit = "^1.11"
+
+
+[tool.poetry.scripts]
+
+
+[tool.black]
+line-length = 79
+check = true
+diff = true
+skip-string-normalization = true
+
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
 skipsdist = true
-envlist = py36
+envlist = lint, py36
 
 [testenv]
 whitelist_externals =
@@ -30,5 +44,16 @@ whitelist_externals =
 skip_install = true
 commands =
     bash ./prepare-toxenv.sh {envbindir} {toxinidir}
-    poetry run py.test --cov tests {posargs}
+    poetry run py.test --cov-report term-missing --cov=hazel_auth tests
+
+[testenv:lint]
+whitelist_externals =
+    bash
+    poetry
+skip_install = true
+deps =
+    pylint
+commands =
+    bash ./prepare-toxenv.sh {envbindir} {toxinidir}
+    pylint --rcfile={toxinidir}/.pylintrc {toxinidir}/src/hazel_auth
 """
