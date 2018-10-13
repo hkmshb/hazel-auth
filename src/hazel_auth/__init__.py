@@ -11,7 +11,7 @@ def get_version():
 def configure_models():
     from hazel_db import meta
     from . import models
-    
+
     meta.attach_model(models.User, meta.BASE)
     meta.attach_model(models.Role, meta.BASE)
     meta.attach_model(models.UserRole, meta.BASE)

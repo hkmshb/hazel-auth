@@ -29,7 +29,7 @@ class Argon2Hasher:
         try:
             self._hasher.verify(hashed_password, plain_text)
             return True
-        except (
+        except ( # pylint: disable=C0330
             argon2.exceptions.VerifyMismatchError,
             argon2.exceptions.VerificationError
         ):

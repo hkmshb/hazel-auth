@@ -3,10 +3,10 @@ import string
 
 
 # default character set from which to generate random strings
-_default = string.ascii_lowercase + string.ascii_uppercase + string.digits
+_DEFAULT = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
 
-def generate_random_string(length, letters=_default):
+def generate_random_string(length, letters=_DEFAULT):
     """Generates a cryptographically safe random string.
     """
     assert letters, 'Character set from which to generate string required'

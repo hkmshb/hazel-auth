@@ -87,7 +87,7 @@ class ActivityTokenMixin(EntityMixin):
     expires_at = Column(DateTime, nullable=False)
     token = Column(
         Unicode(32), nullable=False, unique=True,
-        default= lambda: generate_random_string(32)
+        default=lambda: generate_random_string(32)
     )
 
     def is_expired(self):

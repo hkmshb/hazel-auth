@@ -19,7 +19,7 @@ class User(UserMixin):
     __init__ = _declarative_constructor
     activity_token = relationship('ActivityToken', backref='user')
     activity_token_id = Column(
-        types.UUID, 
+        types.UUID,
         ForeignKey('auth_activity_tokens.uuid')
     )
     roles = relationship(
